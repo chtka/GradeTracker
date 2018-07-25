@@ -2,16 +2,16 @@ version: '3'
 
 services:
   gradetracker:
-    image: chtka/gradetracker
     ports:
       - "8000:8000"
+    build: .
     volumes:
-      - ./:/gradetracker/
-    command: bash -c "cd gradetracker; python manage.py runserver 0.0.0.0:8000"
+      - ./:/src
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - postgres
   postgres:
     image: postgres
-    ports: 
-      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=postgres
     volumes:

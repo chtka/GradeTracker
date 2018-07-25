@@ -4,7 +4,9 @@ ADD requirements.txt /etc/requirements.txt
 
 RUN pip install -r /etc/requirements.txt
 
-VOLUME [ "/gradetracker" ]
+VOLUME [ "/src" ]
 
-CMD ["/bin/bash -c 'cd gradetracker; python manage.py runserver'"]
+WORKDIR /src
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
