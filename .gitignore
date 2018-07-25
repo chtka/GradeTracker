@@ -1,3 +1,2 @@
 postgres-data/
-gradetracker/
-Dockerfile
+**/__pycache__/
