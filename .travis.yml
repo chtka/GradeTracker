@@ -7,6 +7,9 @@ python:
   - 3.6
 install:
   - pip install -r requirements.txt
+before_script:
+  - chmod +x bin/dc
+  - chmod +x bin/ddo
 script:
   - bin/dc build
   - bin/ddo test
