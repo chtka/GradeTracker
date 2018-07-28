@@ -81,8 +81,10 @@ class CourseAPITestCase(APITestCase):
         self.client.force_authenticate(self.admin_user)
 
         response = self.client.get(reverse('course_list'))
+
+        print(response.data)
         
-        self.assertEqual(len(response.data), 1)
+        self.assertEqual(len(response.data['results']), 1)
 
     def test_get_course_list_no_admin(self):
 
@@ -90,4 +92,4 @@ class CourseAPITestCase(APITestCase):
 
         response = self.client.get(reverse('course_list'))
         
-        self.assertEqual(len(response.data), 1)
+        self.assertEqual(len(response.data['results']), 1)
