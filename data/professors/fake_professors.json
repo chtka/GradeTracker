@@ -1,0 +1,20 @@
+[
+  {
+    "model": "professors.professor",
+    "pk": 1,
+    "fields": {
+      "first_name": "Gary",
+      "last_name": "Gillespie",
+      "biography": "Professor for CSE 12, CSE 15L, and CSE 110."
+    }
+  },
+  {
+    "model": "professors.professor",
+    "pk": 2,
+    "fields": {
+      "first_name": "Rick",
+      "last_name": "Ord",
+      "biography": "Professor for CSE 11 and CSE 30."
+    }
+  }
+]
