@@ -37,7 +37,7 @@ PROFESSOR_2_DATA = {
     'biography': 'Professor for CSE 11 and CSE 30.'
 }
 
-class CourseAPITestCase(APITestCase):
+class ProfessorAPITestCase(APITestCase):
 
     @classmethod
     def setUpTestData(cls):
@@ -54,7 +54,7 @@ class CourseAPITestCase(APITestCase):
         cls.professor_1 = Professor(**PROFESSOR_1_DATA)
         cls.professor_1.save()
 
-    def test_post_course_list_admin(self):
+    def test_post_professor_list_admin(self):
 
         self.client.force_authenticate(self.admin_user)
 
@@ -65,7 +65,7 @@ class CourseAPITestCase(APITestCase):
         self.assertNotEqual(professor, None)
         self.client.logout()
 
-    def test_post_course_list_no_admin(self):
+    def test_post_professor_list_no_admin(self):
 
         self.client.force_authenticate(self.user)
 
@@ -76,7 +76,7 @@ class CourseAPITestCase(APITestCase):
         self.assertEqual(professor, None)
         self.client.logout()
 
-    def test_get_course_list_admin(self):
+    def test_get_professor_list_admin(self):
 
         self.client.force_authenticate(self.admin_user)
 
@@ -84,7 +84,7 @@ class CourseAPITestCase(APITestCase):
 
         self.assertEqual(len(response.data['results']), 1)
 
-    def test_get_course_list_no_admin(self):
+    def test_get_professore_list_no_admin(self):
 
         self.client.force_authenticate(self.user)
 
