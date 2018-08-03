@@ -17,9 +17,8 @@ class Class(models.Model):
   course = models.ForeignKey(Course, on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-  quarter = models.CharField(choices=ACADEMIC_QTR_CHOICES)
+  quarter = models.CharField(choices=ACADEMIC_QTR_CHOICES, max_length=10)
   year = models.IntegerField()
-
   grade = models.FloatField(default=100)
 
 

@@ -41,8 +41,16 @@ INSTALLED_APPS = [
     'corsheaders',
     'courses',
     'professors',
-    'rest_framework.authtoken'
+    'classes',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,7 +147,8 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',        
+        'rest_framework.authentication.TokenAuthentication',   
+        'rest_framework.authentication.SessionAuthentication',        
         'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
