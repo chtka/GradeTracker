@@ -5,7 +5,10 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
+import Register from './components/Register';
 import Cookies from 'js-cookie';
+import PrivateRoute from './PrivateRoute'
+import NoAuthRoute from './NoAuthRoute';
 
 class App extends Component {
   constructor(props) {
@@ -86,8 +89,9 @@ class App extends Component {
               }
 
             </List>
-            <Route exact path="/" component={Home}/> 
-            {this.state.isAuthenticated || <Route path="/login" render={(props) => <Login {...props} {...childProps} />}/>}
+            <PrivateRoute exact path="/" authed={this.state.isAuthenticated} component={Home} />
+            <NoAuthRoute path="/login" authed={this.state.isAuthenticated} component={Login}  handleLogin={this.handleLogin}/>
+            <NoAuthRoute path="/register" authed={this.state.isAuthenticated} component={Register} handleLogin={this.handleLogin}/>
           </div>
         </Router>
       </div>
