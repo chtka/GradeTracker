@@ -6,13 +6,15 @@ from professors.models import Professor
 
 class ClassSerializer(serializers.ModelSerializer):
 
-    course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
-    professor = serializers.PrimaryKeyRelatedField(queryset=Professor.objects.all())
+    full_desc = serializers.SerializerMethodField()
 
     class Meta:
         model = Class
-        fields = ('id', 'course', 'professor', 'quarter', 'year', 'grade',)
+        fields = ('id', 'course', 'professor', 'quarter', 'year', 'grade', 'full_desc',)
     
+    def get_full_desc(self, obj):
+        return str(obj.course) + ' with ' + str(obj.professor)
+
     def create(self, validated_data):
         course = validated_data.pop('course')
         professor = validated_data.pop('professor')

@@ -21,5 +21,9 @@ class Class(models.Model):
   year = models.IntegerField()
   grade = models.FloatField(default=100)
 
+  @property
+  def full_desc(self):
+    return str(self.course) + ' ' + str(self.professor)
+
 
 # Create your models here.

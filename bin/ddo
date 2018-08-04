@@ -1,2 +1,4 @@
 docker-compose run --rm gradetracker python manage.py $*
+EXIT=$?
 docker-compose stop
+exit $EXIT
