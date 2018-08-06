@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Message } from 'semantic-ui-react';
 import Cookies from 'js-cookie';
 
 class Login extends Component {
@@ -7,6 +7,9 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.onClickLogin = this.onClickLogin.bind(this);
+    this.state = {
+      incorrectLogin: false,
+    }
   }
 
   onClickLogin(e) {
@@ -32,8 +35,15 @@ class Login extends Component {
         console.log(document.cookie);
         this.props.handleLogin();
         this.props.history.push("/");
+
       } else {
         console.log('incorrect username or password');
+        this.refs.password.value = '';
+        this.setState((prevState, props) => {
+          return {
+            incorrectLogin: true
+          }
+        });
       }
 
     })
@@ -47,6 +57,11 @@ class Login extends Component {
     console.log(this.props)
     return (
       <div>
+        {this.state.incorrectLogin && 
+          <Message negative>
+            <p>Incorrect username or password.</p>
+          </Message>
+        }
         <Form onSubmit={this.onClickLogin}>
 
           <Form.Field>

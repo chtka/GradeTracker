@@ -34,7 +34,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.classes)
     const class_infos = this.state.classes.map((class_) => {
       return (
         <Message key={class_['id']}>
@@ -49,7 +48,6 @@ class Home extends Component {
         </Message>
       )
     })
-    console.log(this.state.classes)
     return (
       <div>
         {class_infos}
