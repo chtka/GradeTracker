@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import { Message } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
@@ -36,16 +37,13 @@ class Home extends Component {
     console.log(this.state.classes)
     const class_infos = this.state.classes.map((class_) => {
       return (
-        <Message>
+        <Message key={class_['id']}>
           <Message.Header>
-            {class_['full_desc']}
+            <Link to={`/class/${class_['id']}`}>{class_['full_desc']}</Link>
           </Message.Header>
           <Message.List>
             <Message.Item>
               Term: {class_['quarter'] + class_['year']}
-            </Message.Item>
-            <Message.Item>
-              Grade: {(class_['grade'] * 100).toString() + '%'}
             </Message.Item>
           </Message.List>
         </Message>
@@ -54,7 +52,7 @@ class Home extends Component {
     console.log(this.state.classes)
     return (
       <div>
-        <p>{class_infos}</p>
+        {class_infos}
       </div>
     )
   }

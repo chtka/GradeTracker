@@ -9,6 +9,7 @@ import Register from './components/Register';
 import Cookies from 'js-cookie';
 import PrivateRoute from './PrivateRoute'
 import NoAuthRoute from './NoAuthRoute';
+import ClassData from './components/ClassData';
 
 class App extends Component {
   constructor(props) {
@@ -92,6 +93,7 @@ class App extends Component {
             <PrivateRoute exact path="/" authed={this.state.isAuthenticated} component={Home} />
             <NoAuthRoute path="/login" authed={this.state.isAuthenticated} component={Login}  handleLogin={this.handleLogin}/>
             <NoAuthRoute path="/register" authed={this.state.isAuthenticated} component={Register} handleLogin={this.handleLogin}/>
+            <Route exact path="/class/:id(\d+)" component={ClassData}/>
           </div>
         </Router>
       </div>
