@@ -12,7 +12,7 @@ class ClassList(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
-        data = dict((k, self.request.data[k]) for k in ('course', 'professor', 'quarter', 'year', 'grade'))
+        data = dict((k, self.request.data[k]) for k in ('course', 'professor', 'quarter', 'year'))
 
         serializer.save(user=self.request.user, **data)
 

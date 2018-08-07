@@ -25,13 +25,16 @@ class Class(models.Model):
   def full_desc(self):
     return str(self.course) + ' ' + str(self.professor)
 
+  def __str__(self):
+    return str(self.course) + ' | ' + str(self.professor) + ' | ' + self.quarter + str(self.year)
+
   def update_grade(self):
     qs = self.category_set.all()
     grade = 0
     grade_alternate = 0
     for category in qs:
-      grade += category.get_grade() * category.get_weight()
-      grade_alternate += category.get_grade() * category.get_weight_alternate()
+      grade += category.grade * category.weight
+      grade_alternate += category.grade * category.weight_alternate
     self.grade = max(grade, grade_alternate)
     self.save()
 
