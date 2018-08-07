@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'courses',
     'professors',
     'classes',
+    'categories',
+    'assignments',
     'rest_framework.authtoken',
     'rest_auth',
     'django.contrib.sites',

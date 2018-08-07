@@ -24,4 +24,6 @@ urlpatterns = [
     path('rest_auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('classes/', include('classes.urls')),
+    path('categories/', include('categories.urls')),
+    path('assignments/', include('assignments.urls'))
 ]
