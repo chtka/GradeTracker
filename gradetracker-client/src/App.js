@@ -10,6 +10,7 @@ import Cookies from 'js-cookie';
 import PrivateRoute from './PrivateRoute'
 import NoAuthRoute from './NoAuthRoute';
 import ClassData from './components/ClassData';
+import NewClassForm from './components/NewClassForm';
 
 class App extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class App extends Component {
             <NoAuthRoute path="/login" authed={this.state.isAuthenticated} component={Login}  handleLogin={this.handleLogin}/>
             <NoAuthRoute path="/register" authed={this.state.isAuthenticated} component={Register} handleLogin={this.handleLogin}/>
             <Route exact path="/class/:id(\d+)" component={ClassData}/>
+            <Route path="/new" component={NewClassForm}/>
           </div>
         </Router>
       </div>

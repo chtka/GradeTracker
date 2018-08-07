@@ -9,6 +9,7 @@ class Login extends Component {
     this.onClickLogin = this.onClickLogin.bind(this);
     this.state = {
       incorrectLogin: false,
+      loggingIn: false
     }
   }
 
@@ -18,6 +19,12 @@ class Login extends Component {
       username: e.target.username.value,
       password: e.target.password.value
     }
+    this.setState((prevState, props) => {
+      return {
+        ...prevState,
+        loggingIn: true
+      }
+    });
     console.log(data);
     fetch('http://127.0.0.1:8000/rest_auth/login/', {
       method: 'POST',
@@ -38,10 +45,10 @@ class Login extends Component {
 
       } else {
         console.log('incorrect username or password');
-        this.refs.password.value = '';
         this.setState((prevState, props) => {
           return {
-            incorrectLogin: true
+            incorrectLogin: true,
+            loggingIn: false
           }
         });
       }
@@ -55,6 +62,7 @@ class Login extends Component {
   render() {
 
     console.log(this.props)
+    console.log(this.state)
     return (
       <div>
         {this.state.incorrectLogin && 
@@ -70,7 +78,7 @@ class Login extends Component {
           <Form.Field>
             <Form.Input name='password' label='Password' type='password' />
           </Form.Field>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit' className={this.state.loggingIn ? "loading" : ""}>Log In</Button>
         </Form>
       </div>
     )

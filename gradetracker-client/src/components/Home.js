@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import { Message } from 'semantic-ui-react';
+import { Message, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -51,6 +51,12 @@ class Home extends Component {
     return (
       <div>
         {class_infos}
+        <Link to="/new">
+          <Button>
+            <i className="plus icon"/>
+            Create New Class
+          </Button>
+        </Link>
       </div>
     )
   }
