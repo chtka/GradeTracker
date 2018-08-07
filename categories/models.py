@@ -1,5 +1,5 @@
 from django.db import models
-from classes import Class
+from classes.models import Class
 from heapq import nsmallest
 
 
@@ -20,7 +20,7 @@ class Category(models.Model):
 
   def update_grade(self):
     qs = self.assignment_set.all()
-    grades = [assignment.get_grade() for assignment in qs]
+    grades = [assignment.grade for assignment in qs]
     total_assignments = len(qs) - self.num_drops_allowed
     if total_assignments== 0:
       self.grade = 1
@@ -31,3 +31,6 @@ class Category(models.Model):
   def save(self, *args, **kwargs):
     super().save(*args, **kwargs)
     self.class_field.update_grade()
+
+  def __str__(self):
+    return str(self.class_field) + ' | ' + self.name
